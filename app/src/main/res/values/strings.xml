@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">BKKRHT</string>
-    <string name="accessibility_service_name">TODO</string>
-    <string name="accessibility_service_description">TODO</string>
+    <string name="accessibility_service_name">Dogalapan</string>
+    <string name="accessibility_service_description">Service required to remove your dogalapan when you use different applications.</string>
+    <string name="alert_message">To let Ashneer Bhai remove your dogalapan, turn on the service for this application</string>
+    <string name="alert_enable">Enable</string>
+    <string name="alert_title">Service Off!</string>
+    <string name="kyu_bhai">Bhai kya kar raha hai tu ?</string>
+    <string name="app_title">Arre Bhai?</string>
 </resources>

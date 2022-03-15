@@ -3,17 +3,17 @@ package com.oddlyspaced.bkkrht.ui.activity
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.accessibility.AccessibilityManager
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.oddlyspaced.bkkrht.util.SharedPreferenceManager
+import com.oddlyspaced.bkkrht.R
 import com.oddlyspaced.bkkrht.databinding.ActivityMainBinding
 import com.oddlyspaced.bkkrht.service.CurrentAppService
 import com.oddlyspaced.bkkrht.ui.adapter.AppListAdapter
+import com.oddlyspaced.bkkrht.util.SharedPreferenceManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,10 +45,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun promptServiceOff() {
         MaterialAlertDialogBuilder(this).apply {
-            setTitle("Service Off!")
-            setMessage("To let Ashneer Bhai remove your dogalapan, turn on the service for this application")
-            setPositiveButton("Enable") { _, _ ->
-                Toast.makeText(applicationContext, "Enable toggle for service under ", Toast.LENGTH_SHORT).show()
+            setTitle(getString(R.string.alert_title))
+            setMessage(getString(R.string.alert_message))
+            setPositiveButton(getString(R.string.alert_enable)) { _, _ ->
                 val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 }

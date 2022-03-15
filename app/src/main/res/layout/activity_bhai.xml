@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Bhai kya kar raha hai tu ?"
+        android:text="@string/kyu_bhai"
         android:textAlignment="center"
         android:textColor="#ffcc00"
         android:textSize="28sp"
