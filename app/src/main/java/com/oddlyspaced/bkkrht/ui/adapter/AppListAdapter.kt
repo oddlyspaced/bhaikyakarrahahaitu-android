@@ -16,9 +16,11 @@ class AppListAdapter(private val context: Context, initialChecked: ArrayList<Str
 
     init {
         context.packageManager.getInstalledApplications(PackageManager.GET_META_DATA).forEach { info ->
-            if (info.flags and ApplicationInfo.FLAG_SYSTEM == 0) {
-                appList.add(info)
-                checkedAppList.add(initialChecked.contains(info.packageName))
+            if (info.packageName != context.packageName) {
+                if (info.flags and ApplicationInfo.FLAG_SYSTEM == 0) {
+                    appList.add(info)
+                    checkedAppList.add(initialChecked.contains(info.packageName))
+                }
             }
         }
     }
