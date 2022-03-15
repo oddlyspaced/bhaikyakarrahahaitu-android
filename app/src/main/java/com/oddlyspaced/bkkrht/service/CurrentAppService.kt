@@ -16,12 +16,11 @@ class CurrentAppService: AccessibilityService() {
         const val TAG = "CurrentAppService"
     }
 
-    private val savedPackages = arrayListOf<String>()
+    private val preferenceManager by lazy { SharedPreferenceManager(applicationContext) }
     private var currentFocusedPackage = ""
 
     override fun onServiceConnected() {
         Log.d(TAG, "Service Connected!")
-        savedPackages.addAll(SharedPreferenceManager(applicationContext).readAppsList())
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
@@ -34,7 +33,7 @@ class CurrentAppService: AccessibilityService() {
                     val tempPackageName = info.packageName.trim()
                     if (tempPackageName.isNotEmpty() && currentFocusedPackage != tempPackageName) {
                         currentFocusedPackage = tempPackageName
-                        if (savedPackages.contains(currentFocusedPackage)) {
+                        if (isPackageSaved(currentFocusedPackage)) {
                             Log.d(TAG, "Saved Package in context: $currentFocusedPackage")
                             // bhai kya kar raha hai tu ?
                             startActivity(Intent(applicationContext, BhaiActivity::class.java).apply {
@@ -45,6 +44,11 @@ class CurrentAppService: AccessibilityService() {
                 }
             }
         }
+    }
+
+    private fun isPackageSaved(pkg: String): Boolean {
+        Log.e(TAG, preferenceManager.readAppsList().toString())
+        return preferenceManager.readAppsList().contains(pkg)
     }
 
     private fun getActivityName(componentName: ComponentName): ActivityInfo? {
