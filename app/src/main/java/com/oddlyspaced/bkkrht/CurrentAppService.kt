@@ -13,7 +13,7 @@ class CurrentAppService: AccessibilityService() {
         const val TAG = "CurrentAppService"
     }
 
-
+    private var currentFocusedPackage = ""
 
     override fun onServiceConnected() {
         Log.d(TAG, "Service Connected!")
@@ -25,10 +25,14 @@ class CurrentAppService: AccessibilityService() {
             if (event.packageName != null && event.className != null) {
                 val componentName = ComponentName(event.packageName.toString(), event.className.toString())
                 val activityInfo = getActivityName(componentName)
-                if (activityInfo != null) {
-                    Log.d(TAG, "----------------------------------")
-                    Log.d(TAG, activityInfo.packageName)
-                    Log.d(TAG, "----------------------------------")
+                activityInfo?.let { info ->
+                    val tempPackageName = info.packageName.trim()
+                    if (tempPackageName.isNotEmpty() && currentFocusedPackage != tempPackageName) {
+                        Log.d(TAG, "----------------------------------")
+                        Log.d(TAG, tempPackageName)
+                        Log.d(TAG, "----------------------------------")
+                        currentFocusedPackage = tempPackageName
+                    }
                 }
             }
         }
