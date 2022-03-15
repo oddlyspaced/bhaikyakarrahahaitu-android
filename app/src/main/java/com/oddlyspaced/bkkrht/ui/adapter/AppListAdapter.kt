@@ -15,7 +15,7 @@ class AppListAdapter(private val context: Context, initialChecked: ArrayList<Str
     private val packageManager: PackageManager = context.packageManager
 
     init {
-        context.packageManager.getInstalledApplications(PackageManager.GET_META_DATA).forEach { info ->
+        context.packageManager.getInstalledApplications(PackageManager.GET_META_DATA).sortedBy { it.loadLabel(packageManager).toString() }.forEach { info ->
             if (info.packageName != context.packageName) {
                 if (info.flags and ApplicationInfo.FLAG_SYSTEM == 0) {
                     appList.add(info)
