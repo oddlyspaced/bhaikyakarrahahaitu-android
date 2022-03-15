@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvApps.apply {
             layoutManager = LinearLayoutManager(applicationContext)
             adapter = appAdapter
+            setItemViewCacheSize(100)
         }
 
         binding.fabSave.setOnClickListener {
