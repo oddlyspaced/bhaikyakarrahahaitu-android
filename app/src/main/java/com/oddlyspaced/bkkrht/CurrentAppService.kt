@@ -20,7 +20,7 @@ class CurrentAppService: AccessibilityService() {
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
-        Log.d(TAG, "Accessibility Event!")
+        // Log.d(TAG, "Accessibility Event!")
         if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
             if (event.packageName != null && event.className != null) {
                 val componentName = ComponentName(event.packageName.toString(), event.className.toString())
@@ -43,12 +43,13 @@ class CurrentAppService: AccessibilityService() {
             packageManager.getActivityInfo(componentName, 0)
         }
         catch (e: PackageManager.NameNotFoundException) {
-            e.printStackTrace()
+            // e.printStackTrace()
             null
         }
     }
 
     override fun onInterrupt() {
+        Log.d(TAG, "Service Interrupted!")
     }
 }
 
