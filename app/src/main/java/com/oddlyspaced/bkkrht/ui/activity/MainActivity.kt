@@ -4,6 +4,8 @@ import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.view.accessibility.AccessibilityManager
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +35,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.fabSave.setOnClickListener {
             prefManager.saveAppsList(appAdapter.getCheckedApps())
+            Handler(Looper.getMainLooper()).postDelayed({
+                finish()
+            }, 1000L)
         }
     }
 
