@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BKKRHT</string>
+    <string name="accessibility_service_name">TODO</string>
+    <string name="accessibility_service_description">TODO</string>
 </resources>
