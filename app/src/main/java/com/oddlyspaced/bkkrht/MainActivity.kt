@@ -8,15 +8,21 @@ import com.oddlyspaced.bkkrht.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val prefManager by lazy { SharedPreferenceManager(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val appAdapter = AppListAdapter(applicationContext, prefManager.readAppsList())
         binding.rvApps.apply {
             layoutManager = LinearLayoutManager(applicationContext)
-            adapter = AppListAdapter(applicationContext)
+            adapter = appAdapter
+        }
+
+        binding.fabSave.setOnClickListener {
+            prefManager.saveAppsList(appAdapter.getCheckedApps())
         }
     }
 }
