@@ -1,4 +1,4 @@
-package com.oddlyspaced.bkkrht
+package com.oddlyspaced.bkkrht.util
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

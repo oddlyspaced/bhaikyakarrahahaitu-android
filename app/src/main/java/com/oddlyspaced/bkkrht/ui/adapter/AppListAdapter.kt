@@ -1,4 +1,4 @@
-package com.oddlyspaced.bkkrht
+package com.oddlyspaced.bkkrht.ui.adapter
 
 import android.content.Context
 import android.content.pm.ApplicationInfo

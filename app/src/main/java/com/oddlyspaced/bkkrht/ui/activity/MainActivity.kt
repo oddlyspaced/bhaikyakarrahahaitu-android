@@ -1,18 +1,19 @@
-package com.oddlyspaced.bkkrht
+package com.oddlyspaced.bkkrht.ui.activity
 
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.accessibility.AccessibilityManager
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.oddlyspaced.bkkrht.util.SharedPreferenceManager
 import com.oddlyspaced.bkkrht.databinding.ActivityMainBinding
+import com.oddlyspaced.bkkrht.service.CurrentAppService
+import com.oddlyspaced.bkkrht.ui.adapter.AppListAdapter
 
 class MainActivity : AppCompatActivity() {
 

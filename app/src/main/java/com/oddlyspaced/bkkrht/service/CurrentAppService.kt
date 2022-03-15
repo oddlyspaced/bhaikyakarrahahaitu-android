@@ -1,4 +1,4 @@
-package com.oddlyspaced.bkkrht
+package com.oddlyspaced.bkkrht.service
 
 import android.accessibilityservice.AccessibilityService
 import android.content.ComponentName
@@ -7,6 +7,8 @@ import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
+import com.oddlyspaced.bkkrht.util.SharedPreferenceManager
+import com.oddlyspaced.bkkrht.ui.activity.BhaiActivity
 
 class CurrentAppService: AccessibilityService() {
 
@@ -35,7 +37,7 @@ class CurrentAppService: AccessibilityService() {
                         if (savedPackages.contains(currentFocusedPackage)) {
                             Log.d(TAG, "Saved Package in context: $currentFocusedPackage")
                             // bhai kya kar raha hai tu ?
-                            startActivity(Intent(applicationContext,BhaiActivity::class.java).apply {
+                            startActivity(Intent(applicationContext, BhaiActivity::class.java).apply {
                                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
                             })
                         }
