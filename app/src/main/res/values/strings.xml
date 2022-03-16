@@ -7,4 +7,7 @@
     <string name="alert_title">Service Off!</string>
     <string name="kyu_bhai">Bhai kya kar raha hai tu ?</string>
     <string name="app_title">Arre Bhai?</string>
+    <string name="alert_miui_title">Miui Detected!</string>
+    <string name="alert_miui_message">Miui requires an additional permission to work.\nOn the App\'s Information page, please go to \'Other Permissions\' and enable \'Display Pop Up while in background\'</string>
+    <string name="toast_miui_alert"><![CDATA[Go to Other Permissions > Display Pop Up while in background]]></string>
 </resources>

@@ -91,11 +91,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun promptExtraMiuiPermission() {
         MaterialAlertDialogBuilder(this).apply {
-            setTitle("Miui Detected!")
-            setMessage("Test Message")
-            setPositiveButton("Enable") {_, _ ->
-                Toast.makeText(applicationContext, "Go to Other Permissions > Display Pop Up while in background", Toast.LENGTH_SHORT).show()
-                // Handler to let the Toast be present for half a second before switching activity
+            setTitle(getString(R.string.alert_miui_title))
+            setMessage(getString(R.string.alert_miui_message))
+            setPositiveButton(R.string.alert_enable) {_, _ ->
+                Toast.makeText(applicationContext, getString(R.string.toast_miui_alert), Toast.LENGTH_SHORT).show()
                 Handler(Looper.getMainLooper()).postDelayed({
                     val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                     val uri = Uri.fromParts("package", packageName, null)
