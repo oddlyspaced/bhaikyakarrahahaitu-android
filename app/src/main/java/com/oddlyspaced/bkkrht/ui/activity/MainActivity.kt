@@ -1,13 +1,16 @@
 package com.oddlyspaced.bkkrht.ui.activity
 
 import android.accessibilityservice.AccessibilityServiceInfo
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.view.accessibility.AccessibilityManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -47,6 +50,9 @@ class MainActivity : AppCompatActivity() {
         if (!isServiceEnabled()) {
             promptServiceOff()
         }
+        else if (isRunningMiui()) {
+            promptExtraMiuiPermission()
+        }
     }
 
     private fun promptServiceOff() {
@@ -73,4 +79,30 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }
+
+    @SuppressLint("PrivateApi")
+    private fun isRunningMiui(): Boolean {
+        val c = Class.forName("android.os.SystemProperties")
+        val get = c.getMethod("get", String::class.java)
+        val miui = get.invoke(c, "ro.miui.ui.version.name") as String?
+        return (miui != null && miui.contains("11"))
+    }
+
+    private fun promptExtraMiuiPermission() {
+        MaterialAlertDialogBuilder(this).apply {
+            setTitle("Miui Detected!")
+            setMessage("Test Message")
+            setPositiveButton("Enable") {_, _ ->
+                Toast.makeText(applicationContext, "Go to Other Permissions > Display Pop Up while in background", Toast.LENGTH_SHORT).show()
+                // Handler to let the Toast be present for half a second before switching activity
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                    val uri = Uri.fromParts("package", packageName, null)
+                    intent.data = uri
+                    startActivity(intent)
+                }, 500L)
+            }
+        }.show()
+    }
+
 }
