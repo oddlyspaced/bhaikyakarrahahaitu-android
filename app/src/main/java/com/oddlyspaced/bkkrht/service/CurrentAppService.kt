@@ -7,8 +7,8 @@ import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
-import com.oddlyspaced.bkkrht.util.SharedPreferenceManager
 import com.oddlyspaced.bkkrht.ui.activity.BhaiActivity
+import com.oddlyspaced.bkkrht.util.SharedPreferenceManager
 
 class CurrentAppService: AccessibilityService() {
 

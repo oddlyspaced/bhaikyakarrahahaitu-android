@@ -1,8 +1,8 @@
 package com.oddlyspaced.bkkrht.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.oddlyspaced.bkkrht.databinding.ActivityBhaiBinding
 
 class BhaiActivity : AppCompatActivity() {
