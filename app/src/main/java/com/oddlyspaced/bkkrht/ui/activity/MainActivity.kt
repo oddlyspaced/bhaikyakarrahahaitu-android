@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
-import android.util.Log
 import android.view.accessibility.AccessibilityManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -40,9 +39,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.fabSave.setOnClickListener {
             prefManager.saveAppsList(appAdapter.getCheckedApps())
-            Handler(Looper.getMainLooper()).postDelayed({
+            runAfterDelay(1000L) {
                 finish()
-            }, 1000L)
+            }
         }
     }
 
@@ -101,17 +100,20 @@ class MainActivity : AppCompatActivity() {
                     intent.data = uri
                     startActivity(intent)
                 }, 500L)
-<<<<<<< Updated upstream
-=======
                 Toast.makeText(applicationContext, R.string.toast_miui_alert, Toast.LENGTH_SHORT).show()
                 runAfterDelay(500L) {
                     startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
                         data = Uri.fromParts("package", packageName, null)
                     })
                 }
->>>>>>> Stashed changes
             }
         }.show()
+    }
+
+    private fun runAfterDelay(delay: Long, methodToRun: () -> Unit) {
+        Handler(Looper.getMainLooper()).postDelayed({
+            methodToRun()
+        }, delay)
     }
 
 }
