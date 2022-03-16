@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.accessibility.AccessibilityManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         val c = Class.forName("android.os.SystemProperties")
         val get = c.getMethod("get", String::class.java)
         val miui = get.invoke(c, "ro.miui.ui.version.name") as String?
-        return (miui != null && miui.contains("11"))
+        return (miui != null)
     }
 
     private fun promptExtraMiuiPermission() {
