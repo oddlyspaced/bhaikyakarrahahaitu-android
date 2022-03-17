@@ -20,3 +20,7 @@ A: By giving personal guidance from Ashneer Grover everytime your dogalapan come
 A: For a technical note, this app makes use of something called 'Accessibility Service', which it uses to check what app is currently open. This Accessibility Service thing is a bit restricted by Google and requires special testing on their end. The app is currently in Review Period and should hopefully surface on Play Store soon.
 
 ## [Demo](https://drive.google.com/file/d/1FGDq34O93-yVtIRSgnKDKTXngPCvXhg0/view)
+
+## As seen on
+[LinkedIn](https://www.linkedin.com/posts/srivastavahardik_meme-android-application-activity-6909785353541279744-W4CX?utm_source=linkedin_share&utm_medium=member_desktop_web)
+[Analytics India Mag](https://analyticsindiamag.com/arre-bhai-now-an-ashneer-grover-meme-app-to-reduce-your-screen-time/)
