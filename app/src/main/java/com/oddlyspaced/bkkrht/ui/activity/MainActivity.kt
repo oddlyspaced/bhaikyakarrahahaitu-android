@@ -107,6 +107,7 @@ class MainActivity : AppCompatActivity() {
                     })
                 }
             }
+            setCancelable(false)
         }.show()
     }
 
